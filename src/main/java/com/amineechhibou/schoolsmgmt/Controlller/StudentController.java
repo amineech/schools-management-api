@@ -1,4 +1,4 @@
-package com.amineechhibou.courseapp.Controlller;
+package com.amineechhibou.schoolsmgmt.Controlller;
 
 
 import java.util.List;
@@ -17,8 +17,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.amineechhibou.courseapp.Model.Student;
-import com.amineechhibou.courseapp.Repository.StudentRepository;
+import com.amineechhibou.schoolsmgmt.Model.Student;
+import com.amineechhibou.schoolsmgmt.Repository.StudentRepository;
 
 @RestController
 @RequestMapping("/students")

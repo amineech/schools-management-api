@@ -1,4 +1,4 @@
-package com.amineechhibou.courseapp.Model;
+package com.amineechhibou.schoolsmgmt.Model;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;

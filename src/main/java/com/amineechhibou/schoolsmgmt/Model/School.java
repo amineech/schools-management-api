@@ -1,8 +1,6 @@
-package com.amineechhibou.courseapp.Model;
+package com.amineechhibou.schoolsmgmt.Model;
 
 import java.util.List;
-
-import com.fasterxml.jackson.annotation.JsonProperty;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
@@ -19,7 +17,6 @@ public class School {
     @GeneratedValue
     private Integer id;
     
-    // @JsonProperty("school_name") // to use in request body
     private String name;
 
     @OneToMany(

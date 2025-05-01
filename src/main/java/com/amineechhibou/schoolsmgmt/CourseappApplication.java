@@ -1,4 +1,4 @@
-package com.amineechhibou.courseapp;
+package com.amineechhibou.schoolsmgmt;
 
 // ##### AUTHOR: AMINE ECHHIBOU | 2025 #####
 

@@ -1,10 +1,10 @@
-package com.amineechhibou.courseapp.Repository;
+package com.amineechhibou.schoolsmgmt.Repository;
 
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.amineechhibou.courseapp.Model.Student;
+import com.amineechhibou.schoolsmgmt.Model.Student;
                                                                 
 public interface StudentRepository extends JpaRepository<Student, Integer> { 
 

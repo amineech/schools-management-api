@@ -1,10 +1,10 @@
-package com.amineechhibou.courseapp.Controlller;
+package com.amineechhibou.schoolsmgmt.Controlller;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.amineechhibou.courseapp.Model.School;
-import com.amineechhibou.courseapp.Repository.SchoolRepository;
+import com.amineechhibou.schoolsmgmt.Model.School;
+import com.amineechhibou.schoolsmgmt.Repository.SchoolRepository;
 
 import java.util.List;
 import java.util.Optional;

@@ -1,4 +1,4 @@
-package com.amineechhibou.courseapp.Model;
+package com.amineechhibou.schoolsmgmt.Model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
