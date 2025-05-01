@@ -14,7 +14,7 @@ public class SchoolsMgmtApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(SchoolsMgmtApplication.class, args);
-		log.info("##### Created by AMINE ECHHIBOU !");
+		log.info("##### Created by AMINE ECHHIBOU ! #####");
 		log.info("Application running successfully !");
 	}
 }
