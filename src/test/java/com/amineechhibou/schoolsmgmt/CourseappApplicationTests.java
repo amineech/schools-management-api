@@ -1,4 +1,4 @@
-package com.amineechhibou.courseapp;
+package com.amineechhibou.schoolsmgmt;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
