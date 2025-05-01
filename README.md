@@ -1,5 +1,5 @@
 # Schools Management API
-# project in progress, adding more features each time we push
+# project in progress, adding more features each time 
 
 A Spring Boot RESTful API for managing schools, students, student profiles and more.  
 Built with Java 17, Spring Boot, and PostgreSQL.
