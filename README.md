@@ -9,5 +9,7 @@ Built with Java 17, Spring Boot, and PostgreSQL.
     - Schools
     - Students
 - Search functionality by school name (substring also)
+- Search functionality by student's firstname
+- Search functionality by student's age
 - Proper HTTP status responses for each request
 - PostgreSQL database integration
