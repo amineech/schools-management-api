@@ -8,12 +8,12 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class CourseappApplication {
+public class SchoolsMgmtApplication {
 
-	private static final Logger log = LoggerFactory.getLogger(CourseappApplication.class);
+	private static final Logger log = LoggerFactory.getLogger(SchoolsMgmtApplication.class);
 
 	public static void main(String[] args) {
-		SpringApplication.run(CourseappApplication.class, args);
+		SpringApplication.run(SchoolsMgmtApplication.class, args);
 		log.info("##### Created by AMINE ECHHIBOU !");
 		log.info("Application running successfully !");
 	}
