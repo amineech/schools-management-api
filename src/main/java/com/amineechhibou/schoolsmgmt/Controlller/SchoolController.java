@@ -26,7 +26,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping("/schools")
 public class SchoolController {
     
-    private SchoolRepository schoolRepository;
+    private final SchoolRepository schoolRepository;
 
     public SchoolController(SchoolRepository schoolRepository) {
         this.schoolRepository = schoolRepository;

@@ -2,7 +2,8 @@ package com.amineechhibou.schoolsmgmt.Model;
 
 import java.util.List;
 
-import jakarta.persistence.CascadeType;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -20,10 +21,9 @@ public class School {
     private String name;
 
     @OneToMany(
-        mappedBy = "school",
-        cascade = CascadeType.ALL
-
+        mappedBy = "school"
     )
+    @JsonManagedReference // to void infinite recursion
     private List<Student> students;
 
     public School() {
@@ -52,7 +52,7 @@ public class School {
 
     /* ########################################### */
 
-    public List<Student> getStudent() {
+    public List<Student> getStudents() {
         return this.students;
     }
 
