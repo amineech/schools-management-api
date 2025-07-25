@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.amineechhibou.schoolsmgmt.DTOs.SchoolDTO;
+import com.amineechhibou.schoolsmgmt.DTOs.StudentDTO;
 import com.amineechhibou.schoolsmgmt.Model.Student;
 import com.amineechhibou.schoolsmgmt.Repository.StudentRepository;
 
@@ -32,8 +34,15 @@ public class StudentController {
 
     @GetMapping({"", "/"})
     public ResponseEntity<?> findAllStudents() {
-        
-        List<Student> students = studentRepository.findAll();
+        // get all students by using the DTO pattern approach
+        // getting only the student's name and his school name
+        List<StudentDTO> students = studentRepository.findAll()
+                                    .stream()
+                                    .map(student -> new StudentDTO(
+                                        student.getFirstname(),
+                                        student.getLastname(),
+                                        new SchoolDTO(student.getSchool().getName())))
+                                    .toList();
 
         if(students.size() > 0) {
             return ResponseEntity.status(HttpStatus.OK)
