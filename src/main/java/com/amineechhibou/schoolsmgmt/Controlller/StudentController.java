@@ -21,28 +21,27 @@ import com.amineechhibou.schoolsmgmt.DTOs.SchoolDTO;
 import com.amineechhibou.schoolsmgmt.DTOs.StudentDTO;
 import com.amineechhibou.schoolsmgmt.Model.Student;
 import com.amineechhibou.schoolsmgmt.Repository.StudentRepository;
+import com.amineechhibou.schoolsmgmt.Service.StudentService;
 
 @RestController
 @RequestMapping("/students")
 public class StudentController {
 
     private final StudentRepository studentRepository;
+    private final StudentService studentService;
 
-    public StudentController(StudentRepository studentRepository) {
+    public StudentController(
+        StudentRepository studentRepository,
+        StudentService studentService) {
         this.studentRepository = studentRepository;
+        this.studentService = studentService;
     }
 
     @GetMapping({"", "/"})
     public ResponseEntity<?> findAllStudents() {
         // get all students by using the DTO pattern approach
         // getting only the student's name and his school name
-        List<StudentDTO> students = studentRepository.findAll()
-                                    .stream()
-                                    .map(student -> new StudentDTO(
-                                        student.getFirstname(),
-                                        student.getLastname(),
-                                        new SchoolDTO(student.getSchool().getName())))
-                                    .toList();
+        List<StudentDTO> students = studentService.getAllStudents();
 
         if(students.size() > 0) {
             return ResponseEntity.status(HttpStatus.OK)
@@ -54,7 +53,9 @@ public class StudentController {
 
     @GetMapping("/{id}")
     public ResponseEntity<?> findStudentById(@PathVariable Integer id) {
-        Optional<Student> student = studentRepository.findById(id); 
+        // get one student ifby using the DTO pattern approach
+        // getting only the student's name and his school name
+        Optional<StudentDTO> student = studentService.getStudentById(id); 
         if(student.isPresent()) {
             return ResponseEntity.status(HttpStatus.OK)
                                 .body(student);
@@ -64,13 +65,15 @@ public class StudentController {
     }
 
     @GetMapping("/search/firstname/{firstname}")
-    public List<Student> findStudentsByFirstname(@PathVariable String firstname) {
-        return studentRepository.findAllByFirstnameContaining(firstname);
+    public List<StudentDTO> findStudentsByFirstname(@PathVariable String firstname) {
+        //get students by firstname using the DTO pattern approach
+        return studentService.getStudentsByFirstnameContaining(firstname);
     }
     
     @GetMapping("/search/age/{age}")
-    public List<Student> findStudentsByFirstname(@PathVariable Integer age) {
-        return studentRepository.findAllByAge(age);
+    public List<StudentDTO> findStudentsByAge(@PathVariable Integer age) {
+        // get students by age using the DTO pattern approach
+        return studentService.getStudentsByAge(age);
     }
 
     @PostMapping({"", "/"})

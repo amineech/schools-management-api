@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.amineechhibou.schoolsmgmt.DTOs.SchoolDTO;
 import com.amineechhibou.schoolsmgmt.Model.School;
 import com.amineechhibou.schoolsmgmt.Repository.SchoolRepository;
+import com.amineechhibou.schoolsmgmt.Service.SchoolService;
 
 import java.util.List;
 import java.util.Optional;
@@ -28,19 +29,20 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class SchoolController {
     
     private final SchoolRepository schoolRepository;
+    private final SchoolService schoolService;
 
-    public SchoolController(SchoolRepository schoolRepository) {
+    public SchoolController(
+        SchoolRepository schoolRepository,
+        SchoolService schoolService) {
         this.schoolRepository = schoolRepository;
+        this.schoolService = schoolService;
     }
 
     @GetMapping({"", "/"})
     public ResponseEntity<?> findAllSchools() {
         // get all schools by using the DTO pattern approach
         // getting only the school's name
-        List<SchoolDTO> schools = schoolRepository.findAll()
-                                    .stream()
-                                    .map(school -> new SchoolDTO(school.getName()))
-                                    .toList();
+        List<SchoolDTO> schools = schoolService.getAllSchools();
 
         if(schools.size() > 0) {
             return ResponseEntity.status(HttpStatus.OK)
