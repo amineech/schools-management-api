@@ -16,7 +16,7 @@ Built with Java 17, Spring Boot, and PostgreSQL.
 
 ## DTO Pattern
 - the project follows the DTO pattern architecture to separate the different application's layers from each other
- => it provides more control on the data we allow our users to see (or not)
- => It's also a good approach for maintenability and scalability 
+- it provides more control on the data we allow our users to see (or not)
+- It's also a good approach for maintenability and scalability 
 
 
