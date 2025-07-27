@@ -50,11 +50,11 @@ public class Student {
         // 
     }
 
-    public Student(String firstname, String lastname, int age) {
-        this.firstname = firstname;
-        this.lastname = lastname;
-        this.age = age;
-    }
+    // public Student(String firstname, String lastname, int age) {
+    //     this.firstname = firstname;
+    //     this.lastname = lastname;
+    //     this.age = age;
+    // }
 
     public int getId() {
         return id;

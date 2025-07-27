@@ -3,7 +3,7 @@ package com.amineechhibou.schoolsmgmt.Controlller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.amineechhibou.schoolsmgmt.DTOs.SchoolDTO;
+import com.amineechhibou.schoolsmgmt.DTOs.SchoolResponseDTO;
 import com.amineechhibou.schoolsmgmt.Model.School;
 import com.amineechhibou.schoolsmgmt.Repository.SchoolRepository;
 import com.amineechhibou.schoolsmgmt.Service.SchoolService;
@@ -42,7 +42,7 @@ public class SchoolController {
     public ResponseEntity<?> findAllSchools() {
         // get all schools by using the DTO pattern approach
         // getting only the school's name
-        List<SchoolDTO> schools = schoolService.getAllSchools();
+        List<SchoolResponseDTO> schools = schoolService.getAllSchools();
 
         if(schools.size() > 0) {
             return ResponseEntity.status(HttpStatus.OK)
@@ -81,10 +81,9 @@ public class SchoolController {
     
     
     @PostMapping({"", "/"})
-    public ResponseEntity<?> createSchool(@RequestBody School school) {
+    public ResponseEntity<?> createSchool(@RequestBody SchoolResponseDTO school) {
         
-        schoolRepository.save(school);
-        
+        schoolService.saveSchool(school);
         return ResponseEntity.status(HttpStatus.OK)
                             .body("Record Created successfully !");
     }

@@ -1,26 +1,31 @@
 package com.amineechhibou.schoolsmgmt.Mapper;
 
-import com.amineechhibou.schoolsmgmt.DTOs.StudentDTO;
+import com.amineechhibou.schoolsmgmt.DTOs.StudentResponseDTO;
 import com.amineechhibou.schoolsmgmt.Model.School;
 import com.amineechhibou.schoolsmgmt.Model.Student;
 
 import org.springframework.stereotype.Service;
 
-import com.amineechhibou.schoolsmgmt.DTOs.SchoolDTO;
+import com.amineechhibou.schoolsmgmt.DTOs.SchoolResponseDTO;
+import com.amineechhibou.schoolsmgmt.DTOs.StudentRequestDTO;
 
 @Service
 public class StudentMapper {
-    public static StudentDTO toDTO(Student student) {
-        return new StudentDTO(
+    public static StudentResponseDTO toDTO(Student student) {
+        return new StudentResponseDTO(
             student.getFirstname(),
             student.getLastname(),
-            new SchoolDTO(student.getSchool().getName())
+            new SchoolResponseDTO(student.getSchool().getId(), student.getSchool().getName())
         );
     }
     
-    // I did not add a method toEntity because I am not using DTO to persist
-    // data, I am using it just for data retrieval and transfer
-    // so I don't need to convert DTO to Entity
-    // if I need to persist data, I will use the Entity directly for now
-    // or I will create a separate Mapper for that purpose   
+    public static Student toEntity(StudentRequestDTO studentRequestDTO, School school) {
+        Student student = new Student();
+        student.setFirstname(studentRequestDTO.firstname());
+        student.setLastname(studentRequestDTO.lastname());      
+        student.setEmail(studentRequestDTO.email());
+        student.setAge(studentRequestDTO.age());
+        student.setSchool(school);
+        return student;
+    }
 }

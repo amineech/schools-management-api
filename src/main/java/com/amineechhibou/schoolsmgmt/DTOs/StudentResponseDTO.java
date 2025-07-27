@@ -1,9 +1,9 @@
 package com.amineechhibou.schoolsmgmt.DTOs;
 
-public record StudentDTO(
+public record StudentResponseDTO(
     String firstname,
     String lastname,
-    SchoolDTO school
+    SchoolResponseDTO school
 ) {
 
     // I did not add StudentResponseDTO because I don't need it

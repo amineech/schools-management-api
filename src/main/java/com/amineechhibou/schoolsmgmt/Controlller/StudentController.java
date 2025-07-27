@@ -17,8 +17,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.amineechhibou.schoolsmgmt.DTOs.SchoolDTO;
-import com.amineechhibou.schoolsmgmt.DTOs.StudentDTO;
+import com.amineechhibou.schoolsmgmt.DTOs.SchoolResponseDTO;
+import com.amineechhibou.schoolsmgmt.DTOs.StudentRequestDTO;
+import com.amineechhibou.schoolsmgmt.DTOs.StudentResponseDTO;
 import com.amineechhibou.schoolsmgmt.Model.Student;
 import com.amineechhibou.schoolsmgmt.Repository.StudentRepository;
 import com.amineechhibou.schoolsmgmt.Service.StudentService;
@@ -41,7 +42,7 @@ public class StudentController {
     public ResponseEntity<?> findAllStudents() {
         // get all students by using the DTO pattern approach
         // getting only the student's name and his school name
-        List<StudentDTO> students = studentService.getAllStudents();
+        List<StudentResponseDTO> students = studentService.getAllStudents();
 
         if(students.size() > 0) {
             return ResponseEntity.status(HttpStatus.OK)
@@ -55,7 +56,7 @@ public class StudentController {
     public ResponseEntity<?> findStudentById(@PathVariable Integer id) {
         // get one student ifby using the DTO pattern approach
         // getting only the student's name and his school name
-        Optional<StudentDTO> student = studentService.getStudentById(id); 
+        Optional<StudentResponseDTO> student = studentService.getStudentById(id); 
         if(student.isPresent()) {
             return ResponseEntity.status(HttpStatus.OK)
                                 .body(student);
@@ -65,21 +66,21 @@ public class StudentController {
     }
 
     @GetMapping("/search/firstname/{firstname}")
-    public List<StudentDTO> findStudentsByFirstname(@PathVariable String firstname) {
+    public List<StudentResponseDTO> findStudentsByFirstname(@PathVariable String firstname) {
         //get students by firstname using the DTO pattern approach
         return studentService.getStudentsByFirstnameContaining(firstname);
     }
     
     @GetMapping("/search/age/{age}")
-    public List<StudentDTO> findStudentsByAge(@PathVariable Integer age) {
+    public List<StudentResponseDTO> findStudentsByAge(@PathVariable Integer age) {
         // get students by age using the DTO pattern approach
         return studentService.getStudentsByAge(age);
     }
 
     @PostMapping({"", "/"})
     @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<?> createStudent(@RequestBody Student student) {
-        studentRepository.save(student);
+    public ResponseEntity<?> createStudent(@RequestBody StudentRequestDTO student) {
+        studentService.saveStudent(student);
         return ResponseEntity.status(HttpStatus.OK)
                             .body("Record created successfully !");
     }
