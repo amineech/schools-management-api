@@ -16,8 +16,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.amineechhibou.schoolsmgmt.DTOs.SchoolResponseDTO;
 import com.amineechhibou.schoolsmgmt.DTOs.StudentRequestDTO;
 import com.amineechhibou.schoolsmgmt.DTOs.StudentResponseDTO;
 import com.amineechhibou.schoolsmgmt.Model.Student;

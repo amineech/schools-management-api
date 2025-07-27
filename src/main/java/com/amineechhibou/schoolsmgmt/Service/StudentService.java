@@ -2,12 +2,9 @@ package com.amineechhibou.schoolsmgmt.Service;
 
 import java.util.List;
 import java.util.Optional;
-
 import org.springframework.stereotype.Service;
-
 import com.amineechhibou.schoolsmgmt.DTOs.StudentRequestDTO;
 import com.amineechhibou.schoolsmgmt.DTOs.StudentResponseDTO;
-import com.amineechhibou.schoolsmgmt.Mapper.SchoolMapper;
 import com.amineechhibou.schoolsmgmt.Mapper.StudentMapper;
 import com.amineechhibou.schoolsmgmt.Model.School;
 import com.amineechhibou.schoolsmgmt.Model.Student;
@@ -28,7 +25,7 @@ public class StudentService {
     public Student saveStudent(StudentRequestDTO studentRequestDTO) {
         School school = schoolRepository.findById(studentRequestDTO.school().id())
                 .orElseThrow(() -> new IllegalArgumentException("School not found with id: " + studentRequestDTO.school().id()));
-                
+
         Student student = StudentMapper.toEntity(studentRequestDTO, school);
         return studentRepository.save(student);
     }
