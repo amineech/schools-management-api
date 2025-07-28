@@ -22,6 +22,8 @@ import com.amineechhibou.schoolsmgmt.Model.Student;
 import com.amineechhibou.schoolsmgmt.Repository.StudentRepository;
 import com.amineechhibou.schoolsmgmt.Service.StudentService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/students")
 public class StudentController {
@@ -77,7 +79,7 @@ public class StudentController {
 
     @PostMapping({"", "/"})
     @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<?> createStudent(@RequestBody StudentRequestDTO student) {
+    public ResponseEntity<?> createStudent(@Valid @RequestBody StudentRequestDTO student) {
         studentService.saveStudent(student);
         return ResponseEntity.status(HttpStatus.OK)
                             .body("Record created successfully !");
